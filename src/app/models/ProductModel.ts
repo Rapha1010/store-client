@@ -3,9 +3,9 @@ import { Deserializable } from "./Deserializable";
 export class ProductModel implements Deserializable {
 
   id:number = 0;
-  descricao:string = '';
-  valor:number = 0;
-  marca:string = '';
+  description:string = '';
+  price:number = 0;
+  brand:string = '';
 
   deserialize(input: ProductModel) {
     Object.assign(this, input);
