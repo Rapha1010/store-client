@@ -12,7 +12,7 @@ export class UserService {
     constructor(private router: Router, private httpClient: HttpClient) { }
 
     signIn = (login:string, password:string) => {
-        return this.httpClient.post<any>(environment.apiUrl + "/security/login", {login, password});
+        return this.httpClient.post<any>(environment.apiUrl + "/auth/login", {login, password});
     }
 
 }

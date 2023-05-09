@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserModel } from '../../models/UserModel';
 import { UserService } from '../../services/UserService';
-import { NotifierService } from 'angular-notifier';
+// import { NotifierService } from 'angular-notifier';
 import { Router } from '@angular/router';
 
 @Component({

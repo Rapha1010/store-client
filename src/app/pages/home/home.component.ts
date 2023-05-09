@@ -24,8 +24,7 @@ export class HomeComponent implements OnInit {
   }
 
   getProductList() {
-    this.productService.getProducts().subscribe((data: any) => {
-      let products: ProductModel[] = data.products;
+    this.productService.getProducts().subscribe((products: ProductModel[]) => {
       products.forEach(element => {
         this.productList.push(element);
       });

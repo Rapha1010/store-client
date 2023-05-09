@@ -16,7 +16,7 @@ export class ProductService {
         let headers = new HttpHeaders();
         let bearer = sessionStorage.getItem("token");
         headers = headers.set('Content-Type', 'application/json; charset=utf-8').set('Authorization', `Bearer ${bearer}`);
-        return this.httpClient.get<any>(environment.apiUrl + "/products", { headers: headers });
+        return this.httpClient.get<ProductModel[]>(environment.apiUrl + "/products", { headers: headers });
     }
 
 }
