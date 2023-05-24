@@ -4,7 +4,8 @@
   <hr>
 
   <p>
-    <a class="btn btn-info" href="#">Novo Produto</a>
+    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#addModal" (click)="addModal()" >Novo
+      Produto</button>
   </p>
 
   <table class="table table-hover">
@@ -32,17 +33,150 @@
           {{ p.price }}
         </td>
         <td class="text-right">
-          <a class="btn btn-warning" href="#">
+          <button class="btn btn-warning" href="#" data-bs-toggle="modal" data-bs-target="#viewModal" (click)="openModal(p.id)">
             <span class="fa fa-search"></span>
-          </a>
-          <a class="btn btn-info" href="#">
+          </button>
+          <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editModal" (click)="openModal(p.id)">
             <span class="fa fa-pencil-alt"></span>
-          </a>
-          <a class="btn btn-danger" href="#">
+          </button>
+          <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delModal" (click)="openModal(p.id)">
             <span class="fa fa-trash"></span>
-          </a>
+          </button>
         </td>
       </tr>
     </tbody>
   </table>
 </main>
+
+<!-- View Modal -->
+<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="viewModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Visualizar Produto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form #userForm="ngForm" style="margin-top: 15px; margin-left: 20px;">
+            <div class="form-row">
+              <label for="input"><b>Id :</b> {{productDetail.id}} </label> <br />
+            </div>
+            <div class="form-row">
+              <label for="input"><b>Descrição : </b>{{productDetail.description}} </label> <br />
+            </div>
+            <div class="form-row">
+              <label for="input"><b>Marca: </b>{{productDetail.brand}}</label> <br />
+            </div>
+            <div class="form-row">
+              <label for="input"><b>Price: </b>{{productDetail.price}}</label> <br />
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Visualizar Produto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form #prodForm="ngForm" (ngSubmit)="onClickEdit(prodForm)" style="margin-top: 15px; margin-left: 20px;">
+            <div class="form-row">
+              <label for="input"><b>Id :</b> {{productDetail.id}} </label> <br />
+            </div>
+            <div class="form-row">
+              <label for="input"><b>Descrição </b><input type="text" class="form-control" name="description" value={{productDetail.description}} [(ngModel)]="productDetail.description"></label> <br />
+            </div>
+            <div class="form-row">
+              <label for="input"><b>Marca </b> <input type="text" class="form-control" name="brand" value={{productDetail.brand}} [(ngModel)]="productDetail.brand"></label> <br />
+            </div>
+            <div class="form-row">
+              <label for="input"><b>Preço </b> <input type="text" class="form-control" name="price" value={{productDetail.price}} [(ngModel)]="productDetail.price"></label> <br />
+            </div>
+            <div class="form-row">
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Add Modal -->
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Adicionar Produto</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <form #prodForm="ngForm" (ngSubmit)="onClickAdd(prodForm)" style="margin-top: 15px; margin-left: 20px;">
+            <div class="form-row">
+              <label for="input"><b>Descrição </b><input type="text" class="form-control" name="description" value={{productDetail.description}} [(ngModel)]="productDetail.description"></label> <br />
+            </div>
+            <div class="form-row">
+              <label for="input"><b>Marca </b> <input type="text" class="form-control" name="brand" value={{productDetail.brand}} [(ngModel)]="productDetail.brand"></label> <br />
+            </div>
+            <div class="form-row">
+              <label for="input"><b>Preço </b> <input type="text" class="form-control" name="price" value={{productDetail.price}} [(ngModel)]="productDetail.price"></label> <br />
+            </div>
+            <div class="form-row">
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Delete Modal -->
+<div class="modal fade" id="delModal" tabindex="-1" role="dialog" aria-labelledby="delModalLabel" aria-hidden="true">
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h1 class="modal-title fs-5" id="exampleModalLabel">Remover</h1>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+
+      <div class="container text-center">
+        <div class="row" style="margin:25px;">
+          <div class="col">
+            Deseja remover {{productDetail.description}} ?
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <button class="btn btn-danger" (click)="deleteProd()">
+              Confirmar
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<notifier-container></notifier-container>
