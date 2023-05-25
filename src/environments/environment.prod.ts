@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  apiUrl: 'https://leonardo.vps.webdock.cloud/api/v3'
 };
