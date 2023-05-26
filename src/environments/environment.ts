@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://leonardo.vps.webdock.cloud/api/v3'
+  apiUrl: 'http://localhost:3000/api/v3'
 };
 
 /*

@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Nerd Store</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Cadastrar</a>
+                </li>
+            </ul>
+            
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" name="Search" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="filterTerm" (ngModelChange)="search()">
+            </form>
+
+            <form class="d-flex" role="cart" style="margin:10px;">
+                <button type="button" class="btn btn-outline-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-cart" viewBox="0 0 16 16">
+                        <path
+                            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z">
+                        </path>
+                    </svg>
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+
+<div class="container text-center">
+
+    <!-- <div class="input-group input-group-default mb-3">
+        <span class="input-group-text" id="inputGroup-sizing-sm">Pesquisa</span>
+        <input type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm">
+    </div> -->
+
+    <div class="row row-cols-4">
+        <div class="col" *ngFor="let p of productList">
+
+            <div class="card" style="width: 18rem; margin: 10px;">
+
+                <img *ngIf="p.id == 2" src="https://images.kabum.com.br/produtos/fotos/238670/console-sony-playstation-5-edicao-digital_1634132113_gg.jpg" class="card-img-top" alt="...">
+                <img *ngIf="p.id == 3" src="https://images.kabum.com.br/produtos/fotos/422864/console-xbox-series-x-premium-edition-rrt-00057_1675971006_gg.jpg" class="card-img-top" alt="...">
+                <img *ngIf="p.id == 5" src="https://images.kabum.com.br/produtos/fotos/153548/nintendo-switch-32gb-1x-joycon-cinza-hbdskaaa2_1616791377_gg.jpg" class="card-img-top" alt="...">
+                <img *ngIf="p.id == 6" src="https://images.kabum.com.br/produtos/fotos/238670/console-sony-playstation-5-edicao-digital_1634132113_gg.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{p.description}}</h5>
+                    <p class="card-text">
+                        Preço : R{{p.price | currency}}
+
+                        {{p.id}}
+
+                        
+                    </p>
+                    <a href="#" class="btn btn-primary">Comprar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
